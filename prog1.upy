@@ -1,0 +1,17 @@
+import pyb
+import time
+led = pyb.LED(1)
+t = time.time()
+
+while time.time() < t+10:
+    led.on()
+    time.sleep(1)
+    led.off()
+    time.sleep(1)
+
+# CTRL-A - enter REPL mode
+# CTRL-B - enter normal REPL mode
+# CTRL-C - interrupt a running program
+# CTRL-D - soft reset
+# CTRL-E - paste mode
+

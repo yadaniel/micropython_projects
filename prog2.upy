@@ -1,0 +1,13 @@
+# 01 => raw repl
+# 05 41 01 => raw paste mode
+
+import pyb
+led = pyb.LED(1)
+led.on()
+
+# ...write program via serial
+# 04
+
+# 02 => back to interactive repl
+
+
