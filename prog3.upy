@@ -1,0 +1,46 @@
+# 01 => raw repl
+# 05 41 01 => raw paste mode
+
+import pyb, time
+import random
+import machine
+
+# pb3 = led1 on nucleo-l432kc
+
+led = pyb.LED(1)
+led.on()
+time.sleep(1)
+
+pb3 = pyb.Pin("PB3")
+pb3.low()
+time.sleep(1)
+pb3.high()
+
+t1 = pyb.Timer(1)
+t1.init(freq = 3)
+t1.callback(lambda t: led1.toggle())
+t1.init(freq = 10)
+time.sleep(10)
+t1.callback(None)
+
+rtc = pyb.RTC()
+rtc.datatime(2020, 12, 20, 22, 6, 36, 889926)
+dt = rtc.datetime()
+print(dt)
+
+adc = pyb.ADC("A0")
+lst = [adc.read() for i in range(10)]
+
+wdt = machine.WDT()
+wdt.feed()
+
+while True: 
+    wdt.feed()
+    print(random.randint(0,100), end="")
+
+# ...write program via serial
+# 04
+
+# 02 => back to interactive repl
+
+
