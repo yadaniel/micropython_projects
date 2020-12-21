@@ -1,0 +1,29 @@
+import pyb
+
+pb4 = pyb.Pin("PB4", pyb.Pin.IN, pyb.Pin.PULL_UP)
+pb4.irq(lambda _: led.toggle())     # lambda receives pin
+# switch to GND
+
+pb4 = pyb.Pin("PB4", pyb.Pin.IN, pyb.Pin.PULL_DOWN)
+pb4.irq(lambda _: led.toggle())     # lambda receives pin
+# switch to P3V3
+
+i = (pyb.Pin.IN, pyb.Pin.PULL_DOWN, pyb.Pin.IRQ_RISING)
+pb4 = pyb.Pin("PB4", *i)
+
+def f(p):
+    pyb.disable_irq()
+    time.sleep_ms(250)
+    pyb.LED(1).toggle()
+    time.sleep_ms(250)
+    pyb.enable_irq()
+
+pb4.irq(f)
+
+# pb4 = pyb.Pin("PB4", pyb.Pin.PULL_UP)
+# pb4 = pyb.Pin("PB4", pyb.Pin.PULL_DOWN)
+# pb4 = pyb.Pin("PB4", pyb.Pin.IRQ_RISING)
+# pb4 = pyb.Pin("PB4", pyb.Pin.IRQ_FALLING)
+# pb4.irq(lambda p: [p, pyb.LED(1).toggle()])
+# pb4.irq(lambda p: led.on() if p() == 1 else led.off())
+
