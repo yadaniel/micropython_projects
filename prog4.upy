@@ -1,5 +1,20 @@
 import machine as m
 import uhashlib
+import re
+
+# show available modules
+help("modules")
+
+# modules can be imported with u prefix
+# import machine
+# import umachine
+
+# compile, match, search, sub
+p = re.compile(r"(\w+)=(\d+)")
+m = p.match("foo=100")
+m.group(0) # "foo=100"
+m.group(1) # "foo"
+m.group(2) # "100"
 
 # reads flash memory from 0x08000000
 for i in range(10):
