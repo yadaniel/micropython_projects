@@ -1,0 +1,15 @@
+import pyb
+led = pyb.LED(1)
+led.on()    # PB3
+
+# stm module must be selected for build
+import stm
+
+ptr = stm.GPIOA + stm.GPIO_IDR
+print(stm.mem32[ptr]) # => 8
+
+# led off
+stm.mem32[ptr] = 0
+# led on
+stm.mem32[ptr] = 8
+
