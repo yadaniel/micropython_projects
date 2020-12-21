@@ -1,0 +1,12 @@
+import machine as m
+import uhashlib
+
+# reads flash memory from 0x08000000
+for i in range(10):
+    print(m.mem32[4*i])
+
+# same hash as cpython
+h = uhashlib.sha256()
+h.update("01234")
+h.digest()
+
