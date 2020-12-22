@@ -1,0 +1,23 @@
+import collections
+
+point2d = collections.namedtuple("point2d_t", ("x","y"))
+point3d = collections.namedtuple("point3d_t", ("x","y","z"))
+
+origin2d = point2d(0,0)
+origin3d = point3d(0,0,0)
+
+print(origin2d)     # => point2d_t(x=0,y=0)
+print(origin3d)     # => point3d_t(x=0,y=0,z=0)
+
+# not double ended append and pop possible
+# append, appendleft
+# pop, popleft
+
+# append only, when len is exceeded then elements on the left will be dropped
+d = collections.deque((),4)     # iterable, maxlen
+d.append(1)
+d.append(2)
+d.append(3)
+d.append(4)
+d.popleft()
+
