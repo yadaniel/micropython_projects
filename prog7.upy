@@ -21,3 +21,16 @@ d.append(3)
 d.append(4)
 d.popleft()
 
+import io
+b = io.BytesIO()
+b.write(b"12345")   # => 5
+b.seek(0)
+b.read()            # => b"12345"
+b.read()            # => b""
+
+import micropython as mp
+mp.stack_use()
+mp.mem_info()       # used and free
+mp.qstr_info()      # string interning, avoid duplicates of strings => qstr = unique string
+
+
